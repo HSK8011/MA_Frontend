@@ -1,9 +1,14 @@
 import React, { createContext, useState, useContext, useMemo } from 'react';
 import { Modal } from '../components/atoms/ui/modal';
 import { LoginForm, SignupForm, ForgotPasswordForm } from '../components/molecules/AuthForms';
+<<<<<<< HEAD
 import { toast } from 'react-hot-toast';
 
 type AuthModalType = 'login' | 'signup' | 'forgot' | 'reset' | null;
+=======
+
+type AuthModalType = 'login' | 'signup' | 'forgot' | null;
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 
 interface AuthModalContextType {
   openModal: (type: AuthModalType) => void;
@@ -40,6 +45,7 @@ export const AuthModalProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     // Close the modal first
     closeModal();
     
+<<<<<<< HEAD
     // Check if we have a valid token
     const token = localStorage.getItem('token');
     if (!token) {
@@ -47,6 +53,8 @@ export const AuthModalProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       return;
     }
     
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     // Set authentication in localStorage
     localStorage.setItem('isAuthenticated', 'true');
     

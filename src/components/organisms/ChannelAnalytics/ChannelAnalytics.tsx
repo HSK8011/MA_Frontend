@@ -50,10 +50,17 @@ export const ChannelAnalytics: React.FC<ChannelAnalyticsProps> = ({ className })
   
   // State for selected account
   const [selectedAccount, setSelectedAccount] = useState<SocialAccount | null>(null);
+<<<<<<< HEAD
   
   // State for metrics loading
   const [isLoading, setIsLoading] = useState(false);
   
+=======
+
+  // State for metrics loading
+  const [isLoading, setIsLoading] = useState(false);
+
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   // Mock data for user accounts (in a real app, this would come from an API)
   const userAccounts: SocialAccount[] = [
     {
@@ -238,7 +245,11 @@ export const ChannelAnalytics: React.FC<ChannelAnalyticsProps> = ({ className })
       setSelectedAccount(filteredAccounts[0]);
     }
   }, [activePlatform, filteredAccounts, selectedAccount]);
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   // Handle time filter click
   const handleTimeFilterClick = (filter: string) => {
     setActiveTimeFilter(filter);

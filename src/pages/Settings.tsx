@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import DashboardTemplate from '../components/templates/Dashboard/DashboardTemplate';
 import AccountSettings from '../components/organisms/Settings/AccountSettings';
+<<<<<<< HEAD
 import { api } from '../utils/api';
 import { toast } from 'react-hot-toast';
 import type { Settings as SettingsType, ProfileData, SecurityData, NotificationPreference } from '../types/settings';
 import { authService } from '../services/authService';
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 
 const Settings: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('profile');
+<<<<<<< HEAD
   const [settings, setSettings] = useState<SettingsType | null>(null);
 
   useEffect(() => {
     // Check if user is authenticated (additional protection)
     const isAuthenticated = authService.isAuthenticated();
     console.log('Auth check:', { isAuthenticated, token: authService.getToken() });
+=======
+
+  useEffect(() => {
+    // Check if user is authenticated (additional protection)
+    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     
     // If not authenticated, redirect to home
     if (!isAuthenticated) {
@@ -22,9 +32,12 @@ const Settings: React.FC = () => {
       return;
     }
     
+<<<<<<< HEAD
     // Fetch user settings
     fetchSettings();
     
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     // Check if tab selection is stored in localStorage (from dropdown navigation)
     const storedTab = localStorage.getItem('settingsActiveTab');
     
@@ -45,6 +58,7 @@ const Settings: React.FC = () => {
     
     // Set page title
     document.title = 'Account Settings - Marketing Automation Tools';
+<<<<<<< HEAD
   }, []);
 
   const fetchSettings = async () => {
@@ -112,12 +126,19 @@ const Settings: React.FC = () => {
   };
 
   // Show loading state while checking authentication or fetching data
+=======
+    setIsLoading(false);
+  }, []);
+
+  // Show loading state while checking authentication
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   if (isLoading) {
     return <div className="flex items-center justify-center h-screen">Loading...</div>;
   }
 
   return (
     <DashboardTemplate activePage="settings" hideDefaultDashboard>
+<<<<<<< HEAD
       <AccountSettings 
         className="mt-4" 
         initialActiveTab={activeTab}
@@ -127,6 +148,9 @@ const Settings: React.FC = () => {
         onUpdateSecurity={handleUpdateSecurity}
         setSettings={setSettings}
       />
+=======
+      <AccountSettings className="mt-4" initialActiveTab={activeTab} />
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     </DashboardTemplate>
   );
 };

@@ -10,9 +10,12 @@ interface UrlShortenerService {
   name: string;
   icon: string;
   isConnected: boolean;
+<<<<<<< HEAD
   description?: string;
   website?: string;
   apiDocumentation?: string;
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 }
 
 export const GeneralSettings: React.FC<GeneralSettingsProps> = ({ className }) => {
@@ -52,10 +55,14 @@ export const GeneralSettings: React.FC<GeneralSettingsProps> = ({ className }) =
             id: 'bitly',
             name: 'Bitly',
             icon: '/images/bitly-logo.png',
+<<<<<<< HEAD
             isConnected: false,
             description: 'Shorten, create and share trusted links',
             website: 'https://bitly.com',
             apiDocumentation: 'https://dev.bitly.com/'
+=======
+            isConnected: false
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
           }
           // Additional URL shorteners would be added here
         ]

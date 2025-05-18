@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@prisma/client": "^6.8.2",
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     "@radix-ui/react-slot": "^1.2.2",
     "@tiptap/extension-character-count": "^2.12.0",
     "@tiptap/extension-image": "^2.12.0",
@@ -22,7 +25,10 @@
     "@tiptap/starter-kit": "^2.12.0",
     "@types/quill": "^2.0.14",
     "axios": "^1.9.0",
+<<<<<<< HEAD
     "chart.js": "^4.4.9",
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -30,18 +36,26 @@
     "quill": "^2.0.3",
     "react": "^19.1.0",
     "react-calendar": "^5.1.0",
+<<<<<<< HEAD
     "react-chartjs-2": "^5.3.0",
     "react-datepicker": "^8.3.0",
     "react-dom": "^19.1.0",
     "react-hot-toast": "^2.5.2",
+=======
+    "react-datepicker": "^8.3.0",
+    "react-dom": "^19.1.0",
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     "react-router-dom": "^7.6.0",
     "sass": "^1.88.0",
     "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+<<<<<<< HEAD
     "@headlessui/react": "^2.2.3",
     "@types/node": "^22.15.18",
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",

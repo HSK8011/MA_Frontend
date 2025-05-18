@@ -90,6 +90,7 @@ export const QueuedPosts: React.FC<QueuedPostsProps> = ({ className }) => {
       content: 'Enjoying holidays with AIMDek Family',
       image: '/images/platforms/holiday-post-2.jpg',
       date: '09' // Tuesday
+<<<<<<< HEAD
     },
     {
       id: '4',
@@ -108,6 +109,8 @@ export const QueuedPosts: React.FC<QueuedPostsProps> = ({ className }) => {
       content: 'Enjoying holidays with AIMDek Family',
       image: '/images/platforms/holiday-post-2.jpg',
       date: '09' // Tuesday
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     }
   ];
 

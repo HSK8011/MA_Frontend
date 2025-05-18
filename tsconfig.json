@@ -3,6 +3,7 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
+<<<<<<< HEAD
   ],
   "compilerOptions": {
     "baseUrl": ".",
@@ -10,4 +11,7 @@
       "@/*": ["src/*"]
     }
   }
+=======
+  ]
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 }

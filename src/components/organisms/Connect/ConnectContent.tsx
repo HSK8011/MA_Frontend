@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { cn } from '../../../lib/utils';
 import { Modal } from '../../atoms/ui/modal';
@@ -5,11 +6,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { integrationService } from '../../../services/integrationService';
 import { toast } from 'react-hot-toast';
 import { SUPPORTED_PLATFORMS } from '../../../config';
+=======
+import React, { useState } from 'react';
+import { cn } from '../../../lib/utils';
+import { Modal } from '../../atoms/ui/modal';
+import { Link, useNavigate } from 'react-router-dom';
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 
 interface ConnectContentProps {
   className?: string;
 }
 
+<<<<<<< HEAD
 type Platform = typeof SUPPORTED_PLATFORMS[keyof typeof SUPPORTED_PLATFORMS];
 
 interface Integration {
@@ -195,10 +203,22 @@ const AccountsList: React.FC<{
   );
 };
 
+=======
+interface SocialAccount {
+  id: string;
+  name: string;
+  type: string;
+  platform: 'twitter' | 'linkedin' | 'facebook' | 'pinterest' | 'instagram';
+  status: 'connected' | 'disconnected';
+  icon: string;
+}
+
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 export const ConnectContent: React.FC<ConnectContentProps> = ({ className }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [accountToRemove, setAccountToRemove] = useState<SocialAccount | null>(null);
+<<<<<<< HEAD
   const [isLoading, setIsLoading] = useState(true);
   const [accounts, setAccounts] = useState<SocialAccount[]>([]);
   const navigate = useNavigate();
@@ -279,6 +299,100 @@ export const ConnectContent: React.FC<ConnectContentProps> = ({ className }) => 
     }
   };
 
+=======
+  const navigate = useNavigate();
+  
+  // Demo connected accounts data
+  const [accounts, setAccounts] = useState<SocialAccount[]>([
+    {
+      id: 'acc_1',
+      name: 'aimdektech',
+      type: 'Twitter Profile',
+      platform: 'twitter',
+      status: 'connected',
+      icon: '/images/page2/twitter-icon.png'
+    },
+    {
+      id: 'acc_2',
+      name: 'aimdek-technologies',
+      type: 'LinkedIn Page',
+      platform: 'linkedin',
+      status: 'connected',
+      icon: '/images/page2/linkedin-icon.png'
+    },
+    {
+      id: 'acc_3',
+      name: 'AIMDek Technologies',
+      type: 'Facebook Page',
+      platform: 'facebook',
+      status: 'connected',
+      icon: '/images/page2/facebook-icon.png'
+    },
+    {
+      id: 'acc_4',
+      name: 'Avakash Dekavadiya',
+      type: 'Pinterest Profile',
+      platform: 'pinterest',
+      status: 'disconnected',
+      icon: '/images/page2/pinterest-icon.png'
+    }
+  ]);
+
+  // Get platform color
+  const getPlatformColor = (platform: string) => {
+    switch (platform) {
+      case 'twitter':
+        return 'bg-blue-400';
+      case 'linkedin':
+        return 'bg-blue-700';
+      case 'facebook':
+        return 'bg-blue-600';
+      case 'pinterest':
+        return 'bg-red-600';
+      case 'instagram':
+        return 'bg-pink-600';
+      default:
+        return 'bg-gray-500';
+    }
+  };
+
+  // Get platform icon
+  const getPlatformIcon = (platform: string) => {
+    switch (platform) {
+      case 'twitter':
+        return 'T';
+      case 'linkedin':
+        return 'in';
+      case 'facebook':
+        return 'f';
+      case 'pinterest':
+        return 'P';
+      case 'instagram':
+        return 'IG';
+      default:
+        return '';
+    }
+  };
+
+  // Handle disconnect account - directly updates the account status
+  const handleDisconnect = (accountId: string) => {
+    setAccounts(accounts.map(account => 
+      account.id === accountId 
+        ? { ...account, status: 'disconnected' } 
+        : account
+    ));
+  };
+
+  // Handle reconnect account - directly updates the account status
+  const handleReconnect = (accountId: string) => {
+    setAccounts(accounts.map(account => 
+      account.id === accountId 
+        ? { ...account, status: 'connected' } 
+        : account
+    ));
+  };
+
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   // Handle remove account - opens confirmation modal
   const handleRemove = (account: SocialAccount) => {
     setAccountToRemove(account);
@@ -286,6 +400,7 @@ export const ConnectContent: React.FC<ConnectContentProps> = ({ className }) => 
   };
 
   // Confirm remove action
+<<<<<<< HEAD
   const confirmRemove = async () => {
     if (!accountToRemove) return;
     
@@ -305,6 +420,17 @@ export const ConnectContent: React.FC<ConnectContentProps> = ({ className }) => 
       setIsRemoveModalOpen(false);
       setAccountToRemove(null);
     }
+=======
+  const confirmRemove = () => {
+    if (!accountToRemove) return;
+    
+    // Remove account from the list
+    setAccounts(accounts.filter(account => account.id !== accountToRemove.id));
+    
+    // Close modal
+    setIsRemoveModalOpen(false);
+    setAccountToRemove(null);
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   };
 
   // Handle navigation to queue times
@@ -356,6 +482,7 @@ export const ConnectContent: React.FC<ConnectContentProps> = ({ className }) => 
         </div>
         
         {/* Accounts List */}
+<<<<<<< HEAD
         <AccountsList
           isLoading={isLoading}
           accounts={filteredAccounts}
@@ -364,6 +491,89 @@ export const ConnectContent: React.FC<ConnectContentProps> = ({ className }) => 
           onRemove={handleRemove}
           onManageQueueTime={handleManageQueueTime}
         />
+=======
+        {filteredAccounts.length > 0 ? (
+          <div className="space-y-4">
+            {filteredAccounts.map((account) => (
+              <div key={account.id} className="border border-gray-200 rounded-lg p-4 flex justify-between items-center">
+                {/* Left: Status and Account Info */}
+                <div className="flex items-center space-x-4">
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center ${account.status === 'connected' ? 'bg-green-500' : 'bg-red-500'}`}>
+                    {account.status === 'connected' ? (
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    )}
+                  </div>
+                  
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-10 h-10 rounded-full ${getPlatformColor(account.platform)} text-white flex items-center justify-center font-medium text-sm`}>
+                      {getPlatformIcon(account.platform)}
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">{account.name}</h3>
+                      <p className="text-sm text-gray-500">{account.type}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Right: Action Buttons */}
+                <div className="flex items-center space-x-2">
+                  {account.status === 'connected' ? (
+                    <>
+                      <button 
+                        className="flex items-center space-x-1 bg-red-50 text-red-600 px-3 py-2 rounded-md hover:bg-red-100 transition-colors"
+                        onClick={() => handleDisconnect(account.id)}
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        <span>Disconnect</span>
+                      </button>
+                      <button 
+                        className="flex items-center space-x-1 bg-blue-50 text-blue-600 px-3 py-2 rounded-md hover:bg-blue-100 transition-colors"
+                        onClick={handleManageQueueTime}
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>Manage Queue Time</span>
+                      </button>
+                    </>
+                  ) : (
+                    <button 
+                      className="flex items-center space-x-1 bg-green-50 text-green-600 px-3 py-2 rounded-md hover:bg-green-100 transition-colors"
+                      onClick={() => handleReconnect(account.id)}
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      <span>Reconnect</span>
+                    </button>
+                  )}
+                  <button 
+                    className="flex items-center space-x-1 bg-gray-50 text-gray-600 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors"
+                    onClick={() => handleRemove(account)}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    <span>Remove Channel</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-8 text-gray-500">
+            <p>No accounts found matching your search.</p>
+          </div>
+        )}
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
       </div>
 
       {/* Remove Channel Confirmation Modal */}

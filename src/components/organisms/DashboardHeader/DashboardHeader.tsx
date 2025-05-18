@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../../../lib/utils';
+<<<<<<< HEAD
 import { authService } from '../../../services/authService';
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 
 interface DashboardHeaderProps {
   className?: string;
@@ -48,8 +51,13 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
   }, [companyDropdownRef]);
   
   const handleLogout = () => {
+<<<<<<< HEAD
     // Use authService to handle logout
     authService.logout();
+=======
+    // Remove authentication state
+    localStorage.removeItem('isAuthenticated');
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     // Redirect to home page
     navigate('/');
   };

@@ -3,9 +3,12 @@ import { cn } from '../../../lib/utils';
 import NotificationSettings from './NotificationSettings';
 import SecuritySettings from './SecuritySettings';
 import GeneralSettings from './GeneralSettings';
+<<<<<<< HEAD
 import { toast } from "react-hot-toast";
 import { api } from "../../../utils/api";
 import type { Settings, ProfileData, SecurityData, NotificationPreference } from '../../../types/settings';
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 
 interface UserData {
   id?: string;
@@ -34,6 +37,7 @@ interface QueueSettings {
 interface AccountSettingsProps {
   className?: string;
   initialActiveTab?: string;
+<<<<<<< HEAD
   settings: Settings | null;
   onUpdateProfile: (data: ProfileData) => Promise<void>;
   onUpdateNotifications: (preferences: NotificationPreference[]) => Promise<void>;
@@ -49,6 +53,13 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
   onUpdateNotifications,
   onUpdateSecurity,
   setSettings
+=======
+}
+
+export const AccountSettings: React.FC<AccountSettingsProps> = ({ 
+  className,
+  initialActiveTab = 'profile' 
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 }) => {
   // Navigation items for settings sidebar
   const settingsNavItems = [
@@ -125,6 +136,7 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
 
   // Fetch user data on component mount
   useEffect(() => {
+<<<<<<< HEAD
     if (settings) {
       console.log('Settings changed in AccountSettings:', settings);
       setUserData({
@@ -144,6 +156,10 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
       setIsLoading(false);
     }
   }, [settings]);
+=======
+    fetchUserData();
+  }, []);
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 
   // Load queue settings when account changes
   useEffect(() => {
@@ -152,11 +168,52 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
     }
   }, [selectedAccountId, activeSettingsTab]);
 
+<<<<<<< HEAD
+=======
+  // Fetch user data from API
+  const fetchUserData = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      // In a real app, this would be fetched from an API
+      // const response = await fetch('/api/user/profile', {
+      //   headers: {
+      //     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      //   }
+      // });
+      
+      // if (!response.ok) {
+      //   throw new Error('Failed to fetch user data');
+      // }
+      
+      // const data = await response.json();
+
+      // Simulating API response for demo
+      const data = {
+        id: 'usr_123456789',
+        name: 'AIMDek Technologies',
+        email: 'marketing@aimdek.com',
+        phone: null, // Initially null as mentioned in requirements
+        timezone: 'Culcutta (+05:30)'
+      };
+      
+      setUserData(data);
+    } catch (err) {
+      console.error('Error fetching user data:', err);
+      setError('Failed to load user data. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   // Fetch queue settings for an account
   const fetchQueueSettings = async (accountId: string) => {
     setIsLoadingQueueSettings(true);
     
     try {
+<<<<<<< HEAD
       const response = await api.get(`/api/users/queue-settings?accountId=${accountId}`);
       
       if (response.data) {
@@ -168,6 +225,30 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
           weekdaySettings: queueSettings.weekdaySettings
         });
       }
+=======
+      // In a real app, this would be fetched from an API
+      // const response = await fetch(`/api/queue-settings?accountId=${accountId}`, {
+      //   headers: {
+      //     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      //   }
+      // });
+      
+      // if (!response.ok) {
+      //   throw new Error('Failed to fetch queue settings');
+      // }
+      
+      // const data = await response.json();
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // For demo, we'll just use our initial state data
+      // In a real app, you would set the data from the API response
+      setQueueSettings({
+        ...queueSettings,
+        accountId
+      });
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     } catch (err) {
       console.error('Error fetching queue settings:', err);
       setError('Failed to load queue settings. Please try again.');
@@ -189,13 +270,18 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
     }
   };
 
+<<<<<<< HEAD
   const handleProfileSubmit = async (e: React.FormEvent) => {
+=======
+  const handleSaveChanges = async (e: React.FormEvent) => {
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     e.preventDefault();
     setIsSaving(true);
     setError(null);
     setSuccessMessage(null);
     
     try {
+<<<<<<< HEAD
       console.log('Submitting profile update with data:', userData);
       await onUpdateProfile({
         name: userData.name,
@@ -205,6 +291,38 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
       setSuccessMessage('Profile updated successfully!');
     } catch (error) {
       console.error('Error updating profile:', error);
+=======
+      // In a real app, this would send data to an API
+      // const response = await fetch('/api/user/profile', {
+      //   method: 'PUT',
+      //   headers: {
+      //     'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     name: userData.name,
+      //     phone: userData.phone,
+      //     timezone: userData.timezone
+      //   })
+      // });
+      
+      // if (!response.ok) {
+      //   throw new Error('Failed to update profile');
+      // }
+      
+      // const updatedData = await response.json();
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Show success notification
+      setSuccessMessage('Profile updated successfully!');
+      
+      // In a real app, you might update the user data with the response:
+      // setUserData(updatedData);
+    } catch (err) {
+      console.error('Error updating profile:', err);
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
       setError('Failed to update profile. Please try again.');
     } finally {
       setIsSaving(false);
@@ -296,12 +414,34 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
     setSuccessMessage(null);
     
     try {
+<<<<<<< HEAD
       const response = await api.put('/api/users/queue-settings', queueSettings);
       
       if (response.data) {
         setQueueSettings(response.data.queueSettings);
         setSuccessMessage('Queue time settings updated successfully!');
       }
+=======
+      // In a real app, this would send data to an API
+      // const response = await fetch('/api/queue-settings', {
+      //   method: 'PUT',
+      //   headers: {
+      //     'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(queueSettings)
+      // });
+      
+      // if (!response.ok) {
+      //   throw new Error('Failed to update queue settings');
+      // }
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Show success notification
+      setSuccessMessage('Queue time settings updated successfully!');
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     } catch (err) {
       console.error('Error updating queue settings:', err);
       setError('Failed to update queue settings. Please try again.');
@@ -386,7 +526,11 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
                     </div>
                   </div>
                   
+<<<<<<< HEAD
                   <form onSubmit={handleProfileSubmit}>
+=======
+                  <form onSubmit={handleSaveChanges}>
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -429,7 +573,11 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
                           id="phone"
                           name="phone"
                           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+<<<<<<< HEAD
                           value={userData.phone ?? ''}
+=======
+                          value={userData.phone || ''}
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
                           onChange={handleInputChange}
                           placeholder="Add a phone number"
                         />
@@ -608,6 +756,7 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
               )}
               
               {activeSettingsTab === 'notification' && (
+<<<<<<< HEAD
                 <NotificationSettings 
                   preferences={settings?.notificationPreferences || []}
                   onUpdatePreferences={onUpdateNotifications}
@@ -627,6 +776,17 @@ export const AccountSettings: React.FC<AccountSettingsProps> = ({
               
               {activeSettingsTab === 'general' && (
                 <GeneralSettings className={className} />
+=======
+                <NotificationSettings />
+              )}
+              
+              {activeSettingsTab === 'security' && (
+                <SecuritySettings />
+              )}
+              
+              {activeSettingsTab === 'general' && (
+                <GeneralSettings />
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
               )}
             </>
           )}

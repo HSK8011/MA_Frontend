@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Button } from '../atoms/ui/button';
+<<<<<<< HEAD
 import { authService } from '../../services/authService';
 import { toast } from 'react-hot-toast';
 
 interface AuthFormProps {
   onSwitch?: (formType: 'login' | 'signup' | 'forgot' | 'reset') => void;
+=======
+
+interface AuthFormProps {
+  onSwitch?: (formType: 'login' | 'signup' | 'forgot') => void;
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   onSuccess?: () => void;
 }
 
@@ -13,6 +19,7 @@ export const LoginForm: React.FC<AuthFormProps> = ({ onSwitch, onSuccess }) => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
+<<<<<<< HEAD
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -35,6 +42,25 @@ export const LoginForm: React.FC<AuthFormProps> = ({ onSwitch, onSuccess }) => {
     } finally {
       setIsLoading(false);
     }
+=======
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    console.log('Login attempt with:', { email, password });
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      
+      // In a real app, validate credentials from API response
+      if (email && password) {
+        // Call success callback to handle auth state and redirect to dashboard
+        if (onSuccess) {
+          onSuccess();
+        }
+      }
+    }, 1000);
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   };
   
   return (
@@ -102,6 +128,7 @@ export const SignupForm: React.FC<AuthFormProps> = ({ onSwitch, onSuccess }) => 
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
+<<<<<<< HEAD
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -115,6 +142,25 @@ export const SignupForm: React.FC<AuthFormProps> = ({ onSwitch, onSuccess }) => 
     } finally {
       setIsLoading(false);
     }
+=======
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    console.log('Signup attempt with:', { fullName, email, password });
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      
+      // In a real app, validate signup response from API
+      if (fullName && email && password) {
+        // Call success callback to handle auth state and redirect to dashboard
+        if (onSuccess) {
+          onSuccess();
+        }
+      }
+    }, 1000);
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   };
   
   return (
@@ -177,6 +223,28 @@ export const SignupForm: React.FC<AuthFormProps> = ({ onSwitch, onSuccess }) => 
         >
           {isLoading ? 'Creating Account...' : 'Create Account'}
         </Button>
+<<<<<<< HEAD
+=======
+        
+        <p className="text-sm text-center mt-4">
+          By clicking "Create Account", I agree to MAT's{' '}
+          <button
+            type="button"
+            className="text-primary hover:underline"
+            onClick={() => window.alert('Terms & Conditions')}
+          >
+            Terms & Conditions
+          </button>{' '}
+          and acknowledge its{' '}
+          <button
+            type="button" 
+            className="text-primary hover:underline"
+            onClick={() => window.alert('Privacy Policy')}
+          >
+            Privacy Policy
+          </button>.
+        </p>
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
       </form>
       
       <div className="mt-6 text-center">
@@ -198,6 +266,7 @@ export const SignupForm: React.FC<AuthFormProps> = ({ onSwitch, onSuccess }) => 
 export const ForgotPasswordForm: React.FC<AuthFormProps> = ({ onSwitch, onSuccess }) => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+<<<<<<< HEAD
   const [otp, setOtp] = useState('');
   const [showResetForm, setShowResetForm] = useState(false);
   const [newPassword, setNewPassword] = useState('');
@@ -258,11 +327,33 @@ export const ForgotPasswordForm: React.FC<AuthFormProps> = ({ onSwitch, onSucces
     } finally {
       setIsLoading(false);
     }
+=======
+  const [resetSent, setResetSent] = useState(false);
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    console.log('Password reset request for:', email);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      setResetSent(true);
+      
+      // Call success callback if provided (in case success means something for this form)
+      if (onSuccess) {
+        // Not using it here but acknowledging it exists and could be used
+        // For example, tracking successful password reset requests
+        console.log('Password reset success callback available');
+      }
+    }, 1000);
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   };
   
   return (
     <div>
       <div className="text-center mb-4">
+<<<<<<< HEAD
         <h2 className="text-2xl font-bold">
           {showResetForm ? 'Reset Password' : 'Forgot Password'}
         </h2>
@@ -275,6 +366,30 @@ export const ForgotPasswordForm: React.FC<AuthFormProps> = ({ onSwitch, onSucces
       
       {!showResetForm ? (
         <form onSubmit={handleForgotSubmit}>
+=======
+        <h2 className="text-2xl font-bold">Forgot Password</h2>
+        <p className="text-gray-500 mt-1">
+          Just let us know the email you use to sign in to MAT
+          and we'll help you get your password back.
+        </p>
+      </div>
+      
+      {resetSent ? (
+        <div className="text-center">
+          <div className="bg-green-100 text-green-700 p-4 rounded-md mb-4">
+            Password reset link sent! Check your email.
+          </div>
+          <Button
+            type="button"
+            className="mt-4 bg-primary text-white py-2 rounded-md hover:bg-primary-dark transition-colors"
+            onClick={() => onSwitch && onSwitch('login')}
+          >
+            Back to Login
+          </Button>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
           <div className="mb-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
               Email Address
@@ -285,6 +400,7 @@ export const ForgotPasswordForm: React.FC<AuthFormProps> = ({ onSwitch, onSucces
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address"
+<<<<<<< HEAD
               className={`w-full px-3 py-2 border ${emailError ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-primary`}
               required
             />
@@ -328,6 +444,8 @@ export const ForgotPasswordForm: React.FC<AuthFormProps> = ({ onSwitch, onSucces
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               placeholder="Enter new password"
+=======
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
@@ -338,10 +456,15 @@ export const ForgotPasswordForm: React.FC<AuthFormProps> = ({ onSwitch, onSucces
             className="w-full bg-primary text-white py-2 rounded-md hover:bg-primary-dark transition-colors"
             disabled={isLoading}
           >
+<<<<<<< HEAD
             {isLoading ? 'Resetting...' : 'Reset Password'}
           </Button>
         </form>
       )}
+=======
+            {isLoading ? 'Sending...' : 'Send Reset Link'}
+          </Button>
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
           
           <div className="mt-6 text-center">
             <button
@@ -352,6 +475,11 @@ export const ForgotPasswordForm: React.FC<AuthFormProps> = ({ onSwitch, onSucces
               Back to Login
             </button>
           </div>
+<<<<<<< HEAD
+=======
+        </form>
+      )}
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
     </div>
   );
 }; 

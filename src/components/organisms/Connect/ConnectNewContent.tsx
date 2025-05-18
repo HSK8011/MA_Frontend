@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { cn } from '../../../lib/utils';
 import { Link } from 'react-router-dom';
 import { integrationService } from '../../../services/integrationService';
 import { toast } from 'react-hot-toast';
+=======
+import React from 'react';
+import { cn } from '../../../lib/utils';
+import { Link } from 'react-router-dom';
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
 
 interface ConnectNewContentProps {
   className?: string;
@@ -63,6 +69,7 @@ export const ConnectNewContent: React.FC<ConnectNewContentProps> = ({ className 
     }
   ];
 
+<<<<<<< HEAD
   const [isConnecting, setIsConnecting] = useState<Record<string, boolean>>({});
 
   // Handle Connect button click for a channel
@@ -95,6 +102,13 @@ export const ConnectNewContent: React.FC<ConnectNewContentProps> = ({ className 
     } finally {
       setIsConnecting(prev => ({ ...prev, [channel.id]: false }));
     }
+=======
+  // Handle Connect button click for a channel
+  const handleConnectClick = (channel: Channel) => {
+    // In a real application, this would initiate OAuth or another auth flow
+    console.log(`Connecting to ${channel.name}`);
+    // We would redirect to the channel's authorization page
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
   };
 
   return (
@@ -145,12 +159,18 @@ export const ConnectNewContent: React.FC<ConnectNewContentProps> = ({ className 
                   <p className="text-gray-600 text-sm mb-6 flex-grow">{channel.description}</p>
                   <button 
                     onClick={() => handleConnectClick(channel)}
+<<<<<<< HEAD
                     disabled={isConnecting[channel.id]}
                     className={`w-full bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded transition-colors ${
                       isConnecting[channel.id] ? 'opacity-70 cursor-not-allowed' : ''
                     }`}
                   >
                     {isConnecting[channel.id] ? 'Connecting...' : 'CONNECT'}
+=======
+                    className="w-full bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded transition-colors"
+                  >
+                    CONNECT
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
                   </button>
                 </div>
               ))}

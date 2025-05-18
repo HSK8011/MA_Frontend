@@ -933,7 +933,11 @@ export const ManageQueueTimes: React.FC<ManageQueueTimesProps> = ({ className })
               <div>
                 <div className="font-bold">{selectedAccount}</div>
                 <div className="text-gray-500 text-sm">
+<<<<<<< HEAD
                   {techFirms.find(firm => firm.name === selectedAccount)?.handle ?? '@aimdektech'}
+=======
+                  {techFirms.find(firm => firm.name === selectedAccount)?.handle || '@aimdektech'}
+>>>>>>> edc90ae9d01d058319cc19df8fec8eef9c19285e
                 </div>
               </div>
             </div>
